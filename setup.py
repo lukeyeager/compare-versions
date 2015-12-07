@@ -20,6 +20,9 @@ setup(
     url = 'https://github.com/lukeyeager/compare-versions',
     description = 'Compare versions using various versioning schemes',
     long_description = readme(),
+    scripts = [
+        'bin/compare_versions',
+    ],
     packages = find_packages(exclude=['tests', 'tests.*']),
     test_suite = 'tests',
     classifiers = [
