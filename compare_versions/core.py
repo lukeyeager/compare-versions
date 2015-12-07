@@ -1,5 +1,7 @@
 from . import schemes
 
+VALID_COMPARISONS=['eq','ne','gt','lt','ge','le']
+
 def is_valid(version):
     try:
         schemes.schemes['semver'](version)
@@ -7,7 +9,7 @@ def is_valid(version):
         return False
     return True
 
-def verify_list(versions, comparison):
+def verify_list(versions, comparison='lt', scheme='semver'):
     """
     Verify that a list of versions all match comparison
     Returns True if the versions are in order
@@ -15,16 +17,20 @@ def verify_list(versions, comparison):
     Arguments:
     versions -- a list of version strings
     comparison -- the comparison to evaluate on the list
+    scheme -- the versioning scheme to use
     """
-    if comparison not in ['eq','ne','gt','lt','ge','le']:
-        raise ValueError('Invalid comparison "%s" - must be eq/ne/gt/lt/ge/le' % comparison)
-
     if len(versions) < 2:
         raise ValueError('You must provide at least two versions to compare')
 
-    prev = schemes.schemes['semver'](versions[0])
+    if comparison not in VALID_COMPARISONS:
+        raise ValueError('Invalid comparison "%s" - options are %s' % (args.comparison, '/'.join(c for c in core.VALID_COMPARISONS)))
+
+    if scheme not in schemes.schemes:
+        raise ValueError('Invalid scheme "%s" - options are %s' % (args.scheme, '/'.join(s for s in schemes.schemes)))
+
+    prev = schemes.schemes[scheme](versions[0])
     for curr in versions[1:]:
-        curr = schemes.schemes['semver'](curr)
+        curr = schemes.schemes[scheme](curr)
         if comparison == 'eq':
             res = prev == curr
         elif comparison == 'ne':
