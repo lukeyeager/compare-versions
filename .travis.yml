@@ -7,20 +7,15 @@ python:
     - '3.3'
     - '3.4'
 
-# Nothing to install
 install:
     - pip install coveralls
 
 script:
-    - ./setup.py build
     - coverage run setup.py test
 
 after_success:
     # Post coverage results
     - coveralls
-
-
-### Deploy to PyPI
 
 deploy:
     provider: pypi
