@@ -19,7 +19,7 @@ def main():
     parser.add_argument('versions', nargs='*', help='version strings to compare')
     parser.add_argument('-s', '--scheme', default='semver', help='versioning scheme - semver[default]/string')
     parser.add_argument('-l', '--list', action='store_true', help='verify that a list of versions is in order according to "comparison"')
-    parser.add_argument('-c', '--comparison', default='lt', help='expected ordering for "list" - one of eq/ne/gt/lt[default]/ge/le')
+    parser.add_argument('-c', '--comparison', default='lt', help='expected ordering for "list" - one of eq/ne/lt[default]/gt/le/ge')
     args = parser.parse_args()
 
     if args.scheme not in schemes.schemes:

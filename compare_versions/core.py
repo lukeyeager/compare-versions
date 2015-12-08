@@ -1,6 +1,6 @@
 from . import schemes
 
-VALID_COMPARISONS=['eq','ne','gt','lt','ge','le']
+VALID_COMPARISONS=['eq','ne','lt','gt','le','ge']
 
 def is_valid(version):
     try:
@@ -35,14 +35,14 @@ def verify_list(versions, comparison='lt', scheme='semver'):
             res = prev == curr
         elif comparison == 'ne':
             res = prev != curr
-        elif comparison == 'gt':
-            res = prev > curr
         elif comparison == 'lt':
             res = prev < curr
-        elif comparison == 'ge':
-            res = prev >= curr
+        elif comparison == 'gt':
+            res = prev > curr
         elif comparison == 'le':
             res = prev <= curr
+        elif comparison == 'ge':
+            res = prev >= curr
         if not res:
             print('ERROR: %s %s %s' % (prev, comparison_symbol(prev, curr), curr))
             return False
