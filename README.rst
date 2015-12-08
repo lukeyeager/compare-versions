@@ -10,6 +10,10 @@ compare_versions
     :target: https://landscape.io/github/lukeyeager/compare-versions/master
     :alt: Code Health
 
+.. image:: https://coveralls.io/repos/lukeyeager/compare-versions/badge.svg?branch=master&service=github
+    :target: https://coveralls.io/github/lukeyeager/compare-versions?branch=master
+    :alt: Code Coverage
+
 Compare versions using various versioning schemes.
 
 *Example usage:* ::

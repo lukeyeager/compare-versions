@@ -8,11 +8,16 @@ python:
     - '3.4'
 
 # Nothing to install
-install: true
+install:
+    - pip install coveralls
 
 script:
     - ./setup.py build
-    - ./setup.py test
+    - coverage run setup.py test
+
+after_success:
+    # Post coverage results
+    - coveralls
 
 
 ### Deploy to PyPI
