@@ -11,4 +11,17 @@ python:
 install: true
 
 script:
+    - ./setup.py build
     - ./setup.py test
+
+
+### Deploy to PyPI
+
+deploy:
+    provider: pypi
+    user: luke.yeager
+    password:
+        secure: SJO8tJ/LLHgiTuCCbh+QO2clOQ6t+Mg5UsZrPSEhf66ivCEW57VrRlxOz/eYm3kFkmMUm3JMZK8Biog/9219H5g0ddKubizGuR9Xvsg9elzn3VpUOusp/jUJqlUvR9HZ0XHF9idP4x1kjs0/ymp/nCrYkTxXocFZXA7+FsjwWUn7Vtg2vH/75JR6W9J05UnPo2NQtGDrxsWVb+t9CjmS95TEb5hDH2dO/NladQ80hPGnsy4Ob1b5yIAJrvOKOFY4TdbgvEiS+QtFtAv9FiDD91Zdy1xDMb4ZPgE1Hi39WUkHEULfQorDvmcAQZWyq1Qj7/+oT5QXdBAAtHtOd0DFxWCKwfu/M5ZWAEzSt+j6WXNStcFDiZlOqX4uMEdV0vPkPm7hmrKVqO8mXSjxNldqCNGFAb5E40zsxlFz2N8kmp9sgdvdXacEonXrRybH8MPxA0e6xvn4bV+izAZv+C8Lnojtr7OECBxMoEOSwz3Ux/kY38Ih6QxV7rhooZmM28Ay4cmLYUPuWnkupp3Vs0DJjlJl9Hiy8RdQZIUVfYw/iggj4iaveoFUFchrAaU2Hn1AHrFVU6txVBtOLBRMvvmCVNRGXqS0dYSAhTTB5Vf2hv6/50/BrdnHn7qenkLYbvo+6YU7zlfP0401BmH7RIy8Y6iDMTDVuiheR3H7sk3gKfc=
+    on:
+        # Only deploy when a new tag is created
+        tags: true
