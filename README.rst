@@ -2,6 +2,10 @@
 compare_versions
 ================
 
+.. image:: https://img.shields.io/pypi/v/compare_versions.svg
+    :target: https://pypi.python.org/pypi/compare_versions
+    :alt: PyPI Version
+
 .. image:: https://travis-ci.org/lukeyeager/compare-versions.svg?branch=master
     :target: https://travis-ci.org/lukeyeager/compare-versions
     :alt: Build Status
