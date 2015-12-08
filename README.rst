@@ -2,6 +2,14 @@
 compare_versions
 ================
 
+.. image:: https://travis-ci.org/lukeyeager/compare-versions.svg?branch=master
+    :target: https://travis-ci.org/lukeyeager/compare-versions
+    :alt: Build Status
+
+.. image:: https://landscape.io/github/lukeyeager/compare-versions/master/landscape.svg?style=flat
+    :target: https://landscape.io/github/lukeyeager/compare-versions/master
+    :alt: Code Health
+
 Compare versions using various versioning schemes.
 
 *Example usage:* ::
