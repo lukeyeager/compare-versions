@@ -2,9 +2,12 @@ from . import schemes
 
 VALID_COMPARISONS=['eq','ne','lt','gt','le','ge']
 
-def is_valid(version):
+def is_valid(version, scheme='semver'):
+    if scheme not in schemes.schemes:
+        raise ValueError('Invalid scheme "%s" - options are %s' % (scheme, '/'.join(s for s in schemes.schemes)))
+
     try:
-        schemes.schemes['semver'](version)
+        schemes.schemes[scheme](version)
     except schemes.InvalidVersionError:
         return False
     return True
@@ -47,6 +50,7 @@ def verify_list(versions, comparison='lt', scheme='semver'):
             print('ERROR: %s %s %s' % (prev, comparison_symbol(prev, curr), curr))
             return False
         prev = curr
+    print(True)
     return True
 
 def comparison_symbol(v1, v2):
