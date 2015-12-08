@@ -53,6 +53,10 @@ def comparison_symbol(v1, v2):
     """
     Returns a character representation of the relationship between two objects
     """
+    # XXX Python2 allows comparison of different types
+    if type(v1) != type(v2):
+        raise TypeError('Cannot compare "%s" and "%s"' % (type(v1), type(v2)))
+
     if v1 == v2:
         return '=='
     elif v1 > v2:
@@ -60,5 +64,5 @@ def comparison_symbol(v1, v2):
     elif v1 < v2:
         return '<'
     else:
-        raise RuntimeError('Could not compare "%s" and "%s"' % (v1, v2))
+        return '?'
 

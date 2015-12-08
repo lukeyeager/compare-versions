@@ -46,5 +46,6 @@ class BaseScheme(object):
         """
         Asserts that the version to be compared is of the same type
         """
-        assert type(self) == type(other)
+        if type(self) != type(other):
+            raise TypeError('Cannot compare "%s" and "%s"' % (type(self), type(other)))
 
