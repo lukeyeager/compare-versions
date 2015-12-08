@@ -23,10 +23,10 @@ def verify_list(versions, comparison='lt', scheme='semver'):
         raise ValueError('You must provide at least two versions to compare')
 
     if comparison not in VALID_COMPARISONS:
-        raise ValueError('Invalid comparison "%s" - options are %s' % (args.comparison, '/'.join(c for c in core.VALID_COMPARISONS)))
+        raise ValueError('Invalid comparison "%s" - options are %s' % (comparison, '/'.join(c for c in core.VALID_COMPARISONS)))
 
     if scheme not in schemes.schemes:
-        raise ValueError('Invalid scheme "%s" - options are %s' % (args.scheme, '/'.join(s for s in schemes.schemes)))
+        raise ValueError('Invalid scheme "%s" - options are %s' % (scheme, '/'.join(s for s in schemes.schemes)))
 
     prev = schemes.schemes[scheme](versions[0])
     for curr in versions[1:]:
