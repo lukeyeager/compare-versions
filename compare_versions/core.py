@@ -1,16 +1,19 @@
 from . import schemes
 
-VALID_COMPARISONS=['eq','ne','lt','gt','le','ge']
+VALID_COMPARISONS = ['eq', 'ne', 'lt', 'gt', 'le', 'ge']
+
 
 def is_valid(version, scheme='semver'):
     if scheme not in schemes.schemes:
-        raise ValueError('Invalid scheme "%s" - options are %s' % (scheme, '/'.join(s for s in schemes.schemes)))
+        raise ValueError('Invalid scheme "%s" - options are %s' %
+                         (scheme, '/'.join(s for s in schemes.schemes)))
 
     try:
         schemes.schemes[scheme](version)
     except schemes.InvalidVersionError:
         return False
     return True
+
 
 def verify_list(versions, comparison='lt', scheme='semver'):
     """
@@ -26,10 +29,12 @@ def verify_list(versions, comparison='lt', scheme='semver'):
         raise ValueError('You must provide at least two versions to compare')
 
     if comparison not in VALID_COMPARISONS:
-        raise ValueError('Invalid comparison "%s" - options are %s' % (comparison, '/'.join(c for c in VALID_COMPARISONS)))
+        raise ValueError('Invalid comparison "%s" - options are %s' %
+                         (comparison, '/'.join(c for c in VALID_COMPARISONS)))
 
     if scheme not in schemes.schemes:
-        raise ValueError('Invalid scheme "%s" - options are %s' % (scheme, '/'.join(s for s in schemes.schemes)))
+        raise ValueError('Invalid scheme "%s" - options are %s' %
+                         (scheme, '/'.join(s for s in schemes.schemes)))
 
     prev = schemes.schemes[scheme](versions[0])
     for curr in versions[1:]:
@@ -47,11 +52,13 @@ def verify_list(versions, comparison='lt', scheme='semver'):
         elif comparison == 'ge':
             res = prev >= curr
         if not res:
-            print('ERROR: %s %s %s' % (prev, comparison_symbol(prev, curr), curr))
+            print('ERROR: %s %s %s' %
+                  (prev, comparison_symbol(prev, curr), curr))
             return False
         prev = curr
     print(True)
     return True
+
 
 def comparison_symbol(v1, v2):
     """
@@ -69,4 +76,3 @@ def comparison_symbol(v1, v2):
         return '<'
     else:
         return '?'
-

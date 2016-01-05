@@ -1,5 +1,6 @@
 from .base import BaseScheme
 
+
 class String(BaseScheme):
     """
     Performs naive string comparisons
